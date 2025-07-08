@@ -28,7 +28,7 @@ const ContactPage: React.FC = () => {
                                 Best for non-urgent inquiries. We'll get back to you within one business day.
                             </p>
                             <p className="mt-4 font-semibold text-primary-600 dark:text-primary-400">
-                                support@concordtitle.com
+                                support@concordtitle.net
                             </p>
                         </div>
                         <div className="mt-6 flex-1 flex items-end">

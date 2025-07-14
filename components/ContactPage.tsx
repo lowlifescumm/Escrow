@@ -28,12 +28,12 @@ const ContactPage: React.FC = () => {
                                 Best for non-urgent inquiries. We'll get back to you within one business day.
                             </p>
                             <p className="mt-4 font-semibold text-primary-600 dark:text-primary-400">
-                                support@concordtitle.net
+                                sales@concordtitle.net
                             </p>
                         </div>
                         <div className="mt-6 flex-1 flex items-end">
                              <a
-                                href="mailto:support@concordtitle.com"
+                                href="mailto:sales@concordtitle.com"
                                 className="rounded-md bg-primary-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-primary-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600"
                             >
                                 Send an Email

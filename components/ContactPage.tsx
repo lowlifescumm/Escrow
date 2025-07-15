@@ -54,12 +54,12 @@ const ContactPage: React.FC = () => {
                                 For urgent matters or to speak directly with a closing agent.
                             </p>
                             <p className="mt-4 font-semibold text-primary-600 dark:text-primary-400">
-                                (555) 555-5555
+                                (865) 601-2916
                             </p>
                         </div>
                         <div className="mt-6 flex-1 flex items-end">
                              <a
-                                href="tel:+1-555-555-5555"
+                                href="tel:+1-(865) 601-2916"
                                 className="rounded-md bg-primary-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-primary-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600"
                             >
                                 Call Now

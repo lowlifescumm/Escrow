@@ -81,64 +81,72 @@ const BalanceSheet: React.FC<BalanceSheetProps> = ({ companyName = 'Your Company
             </div>
         );
     }
-
-    const currentAssets = data['Activo Circulante'] || [];
-    const fixedAssets = data['Activo Fijo (A Largo Plazo)'] || [];
-    const otherAssets = data['Otros Activos'] || [];
     
-    const currentLiabilities = data['Pasivo Circulante'] || [];
-    const longTermLiabilities = data['Pasivos a Largo Plazo'] || [];
-    const ownerEquity = data['Patrimonio del Propietario'] || [];
+    // Updated keys to lowercase to match the Google Sheet 'category' column values.
+    const currentAssets = data['current assets'] || [];
+    const fixedAssets = data['fixed assets'] || [];
+    const otherAssets = data['other assets'] || [];
+    
+    const currentLiabilities = data['current liabilities'] || [];
+    const longTermLiabilities = data['long term liabilities'] || [];
+    const ownerEquity = data["owner equity"] || [];
 
-    const totalAssets = calculateTotal(currentAssets) + calculateTotal(fixedAssets) + calculateTotal(otherAssets);
+    // "Other Assets" are intentionally excluded from the Total Assets calculation per user requirements.
+    const totalAssets = calculateTotal(currentAssets) + calculateTotal(fixedAssets);
     const totalLiabilities = calculateTotal(currentLiabilities) + calculateTotal(longTermLiabilities);
     const totalEquity = calculateTotal(ownerEquity);
     const totalLiabilitiesAndEquity = totalLiabilities + totalEquity;
 
   return (
     <div>
-        <h3 className="text-center font-bold text-lg text-gray-800 dark:text-white mb-1">BALANCE GENERAL</h3>
+        <h3 className="text-center font-bold text-lg text-gray-800 dark:text-white mb-1">BALANCE SHEET</h3>
         <p className="text-center text-sm text-gray-500 dark:text-gray-400 mb-6">{companyName.toUpperCase()}</p>
       
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-8">
             {/* ASSETS COLUMN */}
             <div>
                 <FinancialSection
-                    title="Activo Circulante"
+                    title="Current Assets"
                     items={currentAssets}
-                    totalLabel="Total de Activo Circulante"
+                    totalLabel="Total Current Assets"
                 />
                  <FinancialSection
-                    title="Activo Fijo (A Largo Plazo)"
+                    title="Fixed Assets"
                     items={fixedAssets}
-                    totalLabel="Total de Activos Fijos"
+                    totalLabel="Total Fixed Assets"
                 />
-                <FinancialSection
-                    title="Otros Activos"
-                    items={otherAssets}
-                    totalLabel="Total Otros Activos"
-                />
-                <GrandTotalRow label="Activo Total" value={totalAssets} />
+                <GrandTotalRow label="Total Assets" value={totalAssets} />
+
+                {/* Other Assets are displayed separately for informational purposes and not included in Total Assets */}
+                {otherAssets.length > 0 && (
+                  <div className="mt-6">
+                     <FinancialSection
+                        title="Other Assets"
+                        items={otherAssets}
+                        totalLabel="Total Other Assets"
+                    />
+                  </div>
+                )}
             </div>
 
             {/* LIABILITIES & EQUITY COLUMN */}
             <div>
                  <FinancialSection
-                    title="Pasivo Circulante"
+                    title="Current Liabilities"
                     items={currentLiabilities}
-                    totalLabel="Total de Pasivo Circulante"
+                    totalLabel="Total Current Liabilities"
                 />
                 <FinancialSection
-                    title="Pasivos a Largo Plazo"
+                    title="Long-Term Liabilities"
                     items={longTermLiabilities}
-                    totalLabel="Pasivos a Largo Plazo Totales"
+                    totalLabel="Total Long-Term Liabilities"
                 />
                  <FinancialSection
-                    title="Patrimonio del Propietario"
+                    title="Owner's Equity"
                     items={ownerEquity}
-                    totalLabel="Patrimonio Total del Propietario"
+                    totalLabel="Total Owner's Equity"
                 />
-                <GrandTotalRow label="Total de Pasivo y Patrimonio" value={totalLiabilitiesAndEquity} />
+                <GrandTotalRow label="Total Liabilities and Equity" value={totalLiabilitiesAndEquity} />
             </div>
         </div>
          {Math.abs(totalAssets - totalLiabilitiesAndEquity) > 0.01 && (

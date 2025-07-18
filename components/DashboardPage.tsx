@@ -162,7 +162,7 @@ const DashboardPage: React.FC<DashboardPageProps> = ({ onLogout, userEmail }) =>
                               {isLoading ? (
                                   <div className="mt-4 h-16 bg-gray-200 dark:bg-gray-700 rounded-lg animate-pulse w-3/4"></div>
                               ) : (
-                                  <p className="mt-2 text-5xl font-extrabold text-red-600 dark:text-red-500 tracking-tight">
+                                  <p className="mt-2 text-5xl font-extrabold text-grey-900 dark:text-white tracking-tight">
                                       {formattedBalance}
                                   </p>
                               )}
@@ -183,7 +183,7 @@ const DashboardPage: React.FC<DashboardPageProps> = ({ onLogout, userEmail }) =>
                               {isLoading ? (
                                   <div className="mt-4 h-16 bg-gray-200 dark:bg-gray-700 rounded-lg animate-pulse w-3/4"></div>
                               ) : (
-                                  <p className="mt-2 text-5xl font-extrabold text-green-600 dark:text-green-500 tracking-tight">
+                                  <p className="mt-2 text-5xl font-extrabold text-grey-900 dark:text-white tracking-tight">
                                       {formattedOtherAssets}
                                   </p>
                               )}
